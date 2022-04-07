@@ -1,0 +1,25 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: main.py",
+            "type": "python",
+            "request": "launch",
+            "program": "main.py",//"${file}",
+            //opcao sobre onde vai exibir os resultados: na aba terminal ou debug console
+            "console": "internalConsole",//"integratedTerminal",
+            "env": { "PYTHONPATH": "${workspaceRoot}"},
+             "args" : [
+                 "--algorithm", "DescidaGradiente", 
+            //     "--cost", "HingeLoss", 
+
+            //     "--max_iterations", "100", 
+            //     "--learning_rate", "0.02", 
+            //     "--regularization", "0"
+            ]
+        }
+    ]
+}
