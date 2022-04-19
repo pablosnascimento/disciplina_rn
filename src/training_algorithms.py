@@ -41,6 +41,9 @@ class DescidaGradiente(TrainingAlgorithm):
         self.custos = []
 
     def getW(self,X,y):
+        """
+        getW Versão Padrao
+        """
         w = np.random.uniform(-1,1,size=X.shape[1])
         
         for j in range(self.max_iter):
@@ -58,3 +61,17 @@ class DescidaGradiente(TrainingAlgorithm):
             w += (X.T @ self.cost.gradiente(y, ypred)) * self.learning_rate
             
         return w
+
+        '''
+        getW com alterações para PerceptronMulticlasse
+        '''
+        # w =np.random.uniform(-1,1,size=(X.shape[1],y.shape[1])) #começa com um vetor de pesos aleatórios
+        # for _ in range(self.max_iter):
+        #     ypred = X @ w
+        #     c = self.cost.custo(y, ypred) 
+        #     self.custos.append(c)
+        #     if c==0:
+        #         break
+        #     w *= 1-self.regularization*self.learning_rate
+        #     w += (X.T @ self.cost.gradiente(y, ypred))*self.learning_rate
+        # return w

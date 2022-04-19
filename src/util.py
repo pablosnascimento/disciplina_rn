@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+from sklearn.datasets import make_blobs
 
 ################### FUNCOES INTERNAS AO PERCPETRON E SEUS ALGORTIMOS ##############
 def sign(a):
@@ -51,6 +52,22 @@ def CriaDataSetRegularizacao(n=20, slop=[2,1], intercept=-0.4, dummy_features=3)
     y = np.array(AUX[:,0] > AUX[:,1], dtype=int)*2-1
     
     return X, y
+
+def criaDatasetMulticlasse(n=1000,n_classes=4):
+    '''
+    Gera uma base de dados para problemas multiclasse (n_classes conforme parâmetro).
+    '''
+    X,y = make_blobs(n_samples=n,centers=n_classes,center_box=(0,1),cluster_std=0.02)
+    return X,y
+
+def criaDatasetXOR(n=1000):
+    '''
+    Cria dataset XOR, não linearmente separável.
+    Será necessária uma camada oculta para resolver. Próxima aula
+    '''
+    X,y = make_blobs(n_samples=n,centers=[[0,0],[1,0],[1,1],[0,1]],cluster_std=0.1)
+    y = np.array(y%2,dtype=int)
+    return X,y
 ######################################################################################
 
 ################################# PLOTAGEM DE GRÁFICOS ###############################

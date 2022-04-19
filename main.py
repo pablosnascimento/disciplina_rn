@@ -58,10 +58,18 @@ def main():
     #cria uma base de dados
     X, y = util.CriaDataSetClassificacao(n=1000)
 
+    '''
+    from sklearn.model_selection import train_test_split
+
+    #criando um dataset para exemplo multiclasse
+    X,y = criaDatasetMulticlasse()
+    Xtr,Xte,ytr,yte = train_test_split(X,y,test_size=0.9)
+    '''
+
     #treina a rede
     percep.fit(X,y)
     ypred = percep.predict(X)
-    print(util.accuracy(y=y, ypred=ypred))
+    print('ACURÁCIA NO TESTE > ' + args.algorithm + " + " + args.cost + ":", util.accuracy(y=y, ypred=ypred))
 
     #plotra os resultados
     util.plotDataSet(X, y)
