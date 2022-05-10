@@ -12,19 +12,7 @@ class PseudoInversa(TrainingAlgorithm):
     def getW(self, X, y):
         if self.regularization == 0:
             return np.linalg.pinv(X) @ y
-        else:
-            '''
-            a formula matematica: (X'X + I*r)^(-1) X'y
-            '''
-            f1 = (X.T @ X)
-            I = np.identity(f1.shape[0])
-            f2 = I*self.regularization
-            print('f1',f1)
-            print('f2',f2)
-            fator = f1 + f2
-            
-            w = np.linalg.pinv(fator) @ X.T * y
-            return w
+        return np.linalg.inv(X.T @ X + np.eye(X.shape[1])*self.regularization) @ X.T @ y
 
 class DescidaGradiente(TrainingAlgorithm):
     '''
